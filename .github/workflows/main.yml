@@ -22,4 +22,17 @@ jobs:
           step_level_var: "step_level_var"
       - name: step level var
         run: echo "step:::$step_level_var"
+  second-type-vars:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: create variable
+        run: |
+          echo "VERSION=1.2.3" >> $GITHUB_ENV
+          echo "BUILD_DATE=$(date +%Y%m%d)" >> $GITHUB_ENV
+      - name: User variable
+        run: |
+          echo "$VERSION"
+          echo "$BUILD_DATE"
         
+      - name: full object GITHUB_ENV
+        run: echo "$GITHUB_ENV"
