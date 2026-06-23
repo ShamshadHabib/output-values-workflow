@@ -14,10 +14,10 @@ jobs:
     steps:
       - name: workflow level var
         run: echo "$workflow_level_var"
-        env:
-          step_level_var: "step_level_var"
       - name: job level env var
         run: echo "$job_level_var"
+        env:
+          step_level_var: "step_level_var"
       - name: step level var
         run: echo "$step_level_var"
         
