@@ -36,3 +36,25 @@ jobs:
         
       - name: full object GITHUB_ENV
         run: echo "$GITHUB_ENV"
+
+
+  output-build:
+    runs-on: ubuntu-latest
+    outputs:
+      firstName: ${{steps.firstname.outputs.firstname}}
+    steps:
+      - name: print something
+        run: echo "something"
+      - id: firstname
+        run: echo "firstname=shamshad" >> $GITHUB_OUTPUT
+  output-deploy:
+    needs: output-build
+    runs-on: ubuntu-latest
+    steps:
+      - name: get output variable
+        run: echo "${{needs.output-build.outputs.firstName}}"
+      - id: firstname
+        run: echo "firstname=shamshad" >> $GITHUB_OUTPUT
+ 
+
+    
